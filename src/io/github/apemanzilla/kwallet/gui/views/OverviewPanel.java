@@ -31,7 +31,6 @@ import java.awt.datatransfer.StringSelection;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.io.IOException;
-import java.net.MalformedURLException;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
@@ -41,10 +40,8 @@ public class OverviewPanel extends JPanel {
 	private JTextField address;
 	private JTextField balanceField;
 	private JButton btnCopy;
-	private OverviewPanel self;
 	
 	public OverviewPanel(String kristAddress) {
-		Long balance = null;
 		setBorder(new EmptyBorder(0, 0, 0, 0));
 		setLayout(new BorderLayout(0, 0));
 		
@@ -158,7 +155,6 @@ public class OverviewPanel extends JPanel {
 		panel.add(balanceField, gbc_balance);
 		balanceField.setColumns(10);
 		
-		self = this;
 		new LoadThread().start();
 	}
 	

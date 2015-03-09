@@ -8,6 +8,11 @@ import javax.swing.border.EmptyBorder;
 public class EconomiconPanel extends JPanel {
 
 	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 5859711605797009759L;
+
+	/**
 	 * Create the panel.
 	 */
 	public EconomiconPanel() {

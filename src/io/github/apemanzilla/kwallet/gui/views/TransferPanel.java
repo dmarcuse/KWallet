@@ -9,7 +9,6 @@ import java.awt.BorderLayout;
 
 import javax.swing.JLabel;
 
-import java.awt.GridLayout;
 import java.awt.Component;
 
 import javax.swing.Box;
@@ -31,11 +30,13 @@ import javax.swing.JSpinner;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.io.IOException;
-import java.net.MalformedURLException;
-
 import javax.swing.SpinnerNumberModel;
 
 public class TransferPanel extends JPanel {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 2450538719968834861L;
 	private JTextField recipientField;
 	private JButton btnSend;
 	private JSpinner spinner;
