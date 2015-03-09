@@ -6,17 +6,18 @@ import java.text.SimpleDateFormat;
 
 import javax.swing.table.AbstractTableModel;
 
-public class TransactionTableModel extends AbstractTableModel {
+public class AddressTableModel extends AbstractTableModel {
 
 	private static final long serialVersionUID = -3523439709848378990L;
 	private String[] columnNames = {
-			"Time",
+			"#",
 			"Address",
-			"Amount"
+			"Balance",
+			"First Seen"
 	};
 	private Transaction[] data;
 	
-	public TransactionTableModel(Transaction[] transactions) {
+	public AddressTableModel(Transaction[] transactions) {
 		data = transactions;
 	}
 	

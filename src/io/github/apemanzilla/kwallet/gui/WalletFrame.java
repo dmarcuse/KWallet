@@ -46,7 +46,7 @@ public class WalletFrame extends JFrame {
 	 * Create the frame.
 	 */
 	public WalletFrame() {
-		setMinimumSize(new Dimension(500, 300));
+		setMinimumSize(new Dimension(600, 325));
 		setTitle("KWallet");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);

@@ -99,6 +99,7 @@ public class TransferPanel extends JPanel {
 		
 		spinner = new JSpinner();
 		spinner.setMinimumSize(new Dimension(100, 28));
+		spinner.setMaximumSize(new Dimension(100,28));
 		spinner.setPreferredSize(new Dimension(100, 28));
 		if (tip)
 			spinner.setModel(new SpinnerNumberModel(new Long(250), new Long(1), null, new Long(1)));
@@ -162,8 +163,9 @@ public class TransferPanel extends JPanel {
 				}
 			});
 			GridBagConstraints gbc_btnSend = new GridBagConstraints();
+			gbc_btnSend.gridwidth = 7;
 			gbc_btnSend.insets = new Insets(0, 0, 5, 5);
-			gbc_btnSend.gridx = 2;
+			gbc_btnSend.gridx = 0;
 			gbc_btnSend.gridy = 1;
 			panel.add(btnSend, gbc_btnSend);
 		} else {
@@ -174,9 +176,9 @@ public class TransferPanel extends JPanel {
 				}
 			});
 			GridBagConstraints gbc_btnSend = new GridBagConstraints();
-			gbc_btnSend.gridwidth = 3;
+			gbc_btnSend.gridwidth = 7;
 			gbc_btnSend.insets = new Insets(0, 0, 5, 5);
-			gbc_btnSend.gridx = 2;
+			gbc_btnSend.gridx = 0;
 			gbc_btnSend.gridy = 1;
 			panel.add(btnSend, gbc_btnSend);
 		}

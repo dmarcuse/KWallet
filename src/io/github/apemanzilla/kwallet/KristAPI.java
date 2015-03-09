@@ -1,11 +1,14 @@
 package io.github.apemanzilla.kwallet;
 
+import io.github.apemanzilla.kwallet.types.Address;
 import io.github.apemanzilla.kwallet.types.Transaction;
 import io.github.apemanzilla.kwallet.util.HTTP;
 
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.text.ParseException;
+
 import org.apache.commons.codec.digest.DigestUtils;
 
 public class KristAPI {
@@ -46,6 +49,22 @@ public class KristAPI {
 	
 	public Transaction[] getTransactions() throws MalformedURLException, IOException {
 		return getTransactions(address);
+	}
+	
+	public Address[] getRichList() throws MalformedURLException, IOException, ParseException {
+		String richList = HTTP.readURL(new URL(remoteAPI, "?richapi"));
+		if (richList.length() == 0) {
+			return new Address[0];
+		} else if ((richList.length() % 29) == 0) {
+			Address[] result = new Address[richList.length() / 29];
+			for (int i = 0; i <= richList.length() / 29; i++) {
+				result[i] = new Address(richList.substring(0,29));
+				richList = richList.substring(29);
+			}
+			return result;
+		} else {
+			return new Address[0];
+		}
 	}
 	
 	public enum TransferResults {
