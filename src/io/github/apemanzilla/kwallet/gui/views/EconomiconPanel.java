@@ -58,8 +58,8 @@ public class EconomiconPanel extends JPanel {
 		public void run() {
 			try {
 				JTable tbl = new JTable(new AddressTableModel(KWallet.api.getRichList()));
-				tbl.getColumnModel().getColumn(0).setMinWidth(25);
-				tbl.getColumnModel().getColumn(0).setMaxWidth(25);
+				tbl.getColumnModel().getColumn(0).setMinWidth(30);
+				tbl.getColumnModel().getColumn(0).setMaxWidth(30);
 				JScrollPane sp =  new JScrollPane(tbl);
 				sp.setPreferredSize(new Dimension(tbl.getWidth() + 2,tbl.getHeight() + 2));
 				richlistPanel.add(sp, BorderLayout.CENTER);
