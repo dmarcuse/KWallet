@@ -131,7 +131,7 @@ public class KristAPI {
 		int i = 0;
 		while (i <= 8) {
 			link = Integer.parseInt(stick.substring(2*i,2+(2*i)),16) % 9;
-			if (protein[link] == "") {
+			if (protein[link].equals("")) {
 				stick = DigestUtils.sha256Hex(stick);
 			} else {
 				v2 = v2 + numtochar(Integer.parseInt(protein[link],16));
