@@ -37,9 +37,8 @@ public class KristAPI {
 			return new Transaction[0];
 		} else if ( (transactionData.length() % 31) == 0) {
 			Transaction[] transactions = new Transaction[transactionData.length() / 31];
-			for (int i = 0; i <= transactionData.length() / 31; i++) {
-				transactions[i] = new Transaction(transactionData.substring(0,31), address);
-				transactionData = transactionData.substring(31);
+			for (int i = 0; i < transactionData.length() / 31; i++) {
+				transactions[i] = new Transaction(transactionData.substring(i *  31, (i + 1) * 31), address);
 			}
 			return transactions;
 		} else {

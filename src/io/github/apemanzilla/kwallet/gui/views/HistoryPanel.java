@@ -17,6 +17,7 @@ import java.io.IOException;
 import java.net.MalformedURLException;
 
 import javax.swing.JTable;
+import javax.swing.border.EmptyBorder;
 
 import java.awt.Component;
 
@@ -29,6 +30,7 @@ public class HistoryPanel extends JPanel {
 	public HistoryPanel(String address) throws MalformedURLException, IOException {
 		this.address = address;
 		setLayout(new BorderLayout(0, 0));
+		setBorder(new EmptyBorder(0, 10, 0, 0));
 		
 //		JPanel buttonPanel = new JPanel();
 //		add(buttonPanel, BorderLayout.SOUTH);
