@@ -2,7 +2,9 @@ package io.github.apemanzilla.kwallet.gui.views;
 
 import io.github.apemanzilla.kwallet.KWallet;
 import io.github.apemanzilla.kwallet.gui.AddressTableModel;
+import io.github.apemanzilla.kwallet.types.Address;
 
+import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTabbedPane;
@@ -10,6 +12,9 @@ import javax.swing.JTable;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
+import java.awt.Point;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.text.ParseException;
@@ -57,9 +62,29 @@ public class EconomiconPanel extends JPanel {
 	class LoadThread extends Thread {
 		public void run() {
 			try {
-				JTable tbl = new JTable(new AddressTableModel(KWallet.api.getRichList()));
+				final Address[] richlist = KWallet.api.getRichList();
+				JTable tbl = new JTable(new AddressTableModel(richlist));
 				tbl.getColumnModel().getColumn(0).setMinWidth(30);
 				tbl.getColumnModel().getColumn(0).setMaxWidth(30);
+			    tbl.addMouseListener(new MouseAdapter() {
+			        public void mousePressed(MouseEvent me) {
+			            JTable table =(JTable) me.getSource();
+			            Point p = me.getPoint();
+			            int row = table.rowAtPoint(p);
+			            if (me.getClickCount() == 2) {
+		            		JFrame addressLookup = new JFrame("Transactions for " + richlist[row].getAddress());
+		            		addressLookup.setMinimumSize(new Dimension(450,300));
+		            		try {
+								addressLookup.setContentPane(new HistoryPanel(richlist[row].getAddress()));
+								addressLookup.pack();
+								addressLookup.setLocationRelativeTo(null);
+								addressLookup.setVisible(true);
+							} catch (IOException e) {
+								e.printStackTrace();
+							}
+		            	}
+		            }
+		        });
 				JScrollPane sp =  new JScrollPane(tbl);
 				sp.setPreferredSize(new Dimension(tbl.getWidth() + 2,tbl.getHeight() + 2));
 				richlistPanel.add(sp, BorderLayout.CENTER);

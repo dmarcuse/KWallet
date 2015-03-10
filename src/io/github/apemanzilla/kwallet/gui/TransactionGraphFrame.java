@@ -83,7 +83,7 @@ public class TransactionGraphFrame extends JFrame
     }
     public void run() { TransactionGraphFrame.this.getProgressBar().setIndeterminate(true);
       try {
-        Transaction[] transactions = KWallet.api.getTransactions();
+        Transaction[] transactions = KWallet.api.getTransactions(address);
         TransactionGraphFrame.this.getProgressBar().setMinimum(0);
         TransactionGraphFrame.this.getProgressBar().setMaximum(transactions.length);
         TransactionGraphFrame.this.data = new XYSeriesCollection();

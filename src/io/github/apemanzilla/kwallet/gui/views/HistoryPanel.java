@@ -81,9 +81,8 @@ public class HistoryPanel extends JPanel
             int row = table.rowAtPoint(p);
             if (me.getClickCount() == 2) {
             	if (!data[row].isMined()) {
-            		System.out.println("clicked: " + data[row].getAddr());
             		JFrame addressLookup = new JFrame("Transactions for " + data[row].getAddr());
-            		addressLookup.setMinimumSize(new Dimension(400,300));
+            		addressLookup.setMinimumSize(new Dimension(450,300));
             		try {
 						addressLookup.setContentPane(new HistoryPanel(data[row].getAddr()));
 						addressLookup.pack();
