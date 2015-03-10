@@ -3,17 +3,21 @@ package io.github.apemanzilla.kwallet;
 import io.github.apemanzilla.kwallet.gui.LoginFrame;
 import io.github.apemanzilla.kwallet.gui.WalletFrame;
 import io.github.apemanzilla.kwallet.gui.WalletFrame.Views;
+import io.github.apemanzilla.kwallet.gui.views.HistoryPanel;
 import io.github.apemanzilla.kwallet.util.HTTP;
 
+import java.awt.Dimension;
 import java.awt.EventQueue;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
 
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 import javax.swing.UIManager.LookAndFeelInfo;
 
+@SuppressWarnings("unused")
 public class KWallet {
 	
 	private static LoginFrame loginWindow;
