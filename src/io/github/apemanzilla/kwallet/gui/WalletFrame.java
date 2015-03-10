@@ -1,6 +1,7 @@
 package io.github.apemanzilla.kwallet.gui;
 
 import io.github.apemanzilla.kwallet.KWallet;
+import io.github.apemanzilla.kwallet.gui.views.EconomiconPanel;
 import io.github.apemanzilla.kwallet.gui.views.HistoryPanel;
 import io.github.apemanzilla.kwallet.gui.views.OverviewPanel;
 import io.github.apemanzilla.kwallet.gui.views.TransferPanel;
@@ -207,13 +208,18 @@ public class WalletFrame extends JFrame {
 				break;
 		 }
 		 case ECONOMICON: {
-
+			 	viewContainer.removeAll();
+			 	currentView = new EconomiconPanel();
+			 	viewContainer.add(currentView);
+			 	
 				btnOverview.setEnabled(true);
 				btnTransactions.setEnabled(true);
 				btnSendKrist.setEnabled(true);
 				btnEconomicon.setEnabled(false);
 				btnTip.setEnabled(true);
-				this.repaint();
+				invalidate();
+				validate();
+				repaint();
 				break;
 		 }
 		case TIP:

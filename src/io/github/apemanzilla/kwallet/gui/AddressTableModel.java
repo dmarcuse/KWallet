@@ -1,7 +1,6 @@
 package io.github.apemanzilla.kwallet.gui;
 
-import io.github.apemanzilla.kwallet.types.Transaction;
-
+import io.github.apemanzilla.kwallet.types.Address;
 import java.text.SimpleDateFormat;
 
 import javax.swing.table.AbstractTableModel;
@@ -15,10 +14,10 @@ public class AddressTableModel extends AbstractTableModel {
 			"Balance",
 			"First Seen"
 	};
-	private Transaction[] data;
+	private Address[] data;
 	
-	public AddressTableModel(Transaction[] transactions) {
-		data = transactions;
+	public AddressTableModel(Address[] addresses) {
+		data = addresses;
 	}
 	
 	public String getColumnName(int col) {
@@ -30,34 +29,34 @@ public class AddressTableModel extends AbstractTableModel {
 	}
 
 	public int getRowCount() {
-		if (data.length < 200) {
-			return data.length;
-		} else {
-			return 200;
-		}
+		return 15;
 	}
 
 	public Object getValueAt(int row, int col) {
-		if (row > data.length || row > 200) {
-			return null;
-		}
-		switch(col) {
+		try {
+			if (row >= 15) {
+				return null;
+			}
+			switch(col) {
 			case 0: {
-				return new SimpleDateFormat("MMMM d, hh:mm a").format(data[row].getTime());
+				return row + 1;
 			}
 			case 1: {
-				if (data[row].isMined()) {
-					return "(Mined)";
-				} else {
-					return data[row].getAddr();
-				}
+				return data[row].getAddress();
 			}
 			case 2: {
-				return data[row].getAmount();
+				return String.format("%,d", data[row].getBalance());
+			}
+			case 3: {
+				SimpleDateFormat format = new SimpleDateFormat("MMMM dd, YYYY");
+				return format.format(data[row].getLastSeen());
 			}
 			default: {
 				return null;
 			}
+			}
+		} catch (Exception e) {
+			return null;
 		}
 	}
 	

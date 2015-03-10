@@ -52,14 +52,15 @@ public class KristAPI {
 	}
 	
 	public Address[] getRichList() throws MalformedURLException, IOException, ParseException {
-		String richList = HTTP.readURL(new URL(remoteAPI, "?richapi"));
+		// Extra HTML tags seem to get caught without this regex
+		String richList = HTTP.readURL(new URL(remoteAPI, "?richapi")).replaceAll("<[^>]*>", "");
 		if (richList.length() == 0) {
 			return new Address[0];
 		} else if ((richList.length() % 29) == 0) {
 			Address[] result = new Address[richList.length() / 29];
-			for (int i = 0; i <= richList.length() / 29; i++) {
-				result[i] = new Address(richList.substring(0,29));
-				richList = richList.substring(29);
+			for (int i = 0; i < richList.length() / 29; i++) {
+				result[i] = new Address(richList.substring(i * 29,(i+1) * 29));
+				
 			}
 			return result;
 		} else {
