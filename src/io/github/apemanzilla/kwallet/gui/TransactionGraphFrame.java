@@ -32,7 +32,7 @@ public class TransactionGraphFrame extends JFrame
 
   public TransactionGraphFrame(String address)
   {
-    setMinimumSize(new Dimension(350, 350));
+    setMinimumSize(new Dimension(600, 600));
     this.address = address;
     setTitle("Complete Transaction History");
 
@@ -71,7 +71,7 @@ public class TransactionGraphFrame extends JFrame
       false);
     XYPlot plot = chart.getXYPlot();
     DateAxis domain = new DateAxis();
-    domain.setDateFormatOverride(new SimpleDateFormat("MMM dd"));
+    domain.setDateFormatOverride(new SimpleDateFormat("MMM dd, hh:mm a"));
     plot.setDomainAxis(domain);
     ChartPanel chartPanel = new ChartPanel(chart);
     setContentPane(chartPanel);
