@@ -4,6 +4,7 @@ import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Locale;
 import java.util.TimeZone;
 
 public class Transaction {
@@ -18,7 +19,7 @@ public class Transaction {
 	
 	public Transaction(String data, String sourceAddr) {
 		try {
-			DateFormat format = new SimpleDateFormat("MMM dd HH:mm");
+			DateFormat format = new SimpleDateFormat("MMM dd HH:mm", Locale.US);
 			time = format.parse(data.substring(0,12));
 			// Adjust time to local timezone
 			TimeZone tz = TimeZone.getDefault();
