@@ -1,0 +1,15 @@
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'idea'
+apply plugin: 'application'
+
+mainClassName = "io.github.apemanzilla.kwallet.KWallet"
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile "jfree:jfreechart:1.0.13"
+    compile "commons-codec:commons-codec:1.10"
+}
