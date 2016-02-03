@@ -1,0 +1,32 @@
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'idea'
+apply plugin: 'application'
+
+mainClassName = "io.github.apemanzilla.kwallet.KWallet"
+
+version = "0.2.3"
+
+sourceCompatibility = 1.7
+targetCompatibility = 1.7
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile "jfree:jfreechart:1.0.13"
+    compile "commons-codec:commons-codec:1.10"
+}
+
+task fatJar(type: Jar) {
+    manifest {
+        attributes  'Implementation-Title':     'KWallet',
+                    'Implementation-Version':   version,
+                    'Main-Class':               mainClassName
+    }
+
+    baseName = project.name + '-all'
+    from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }
+    with jar
+}
