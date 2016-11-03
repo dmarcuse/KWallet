@@ -122,11 +122,9 @@ public class KristAPI {
 		int link = 0;
 		String v2 = "k";
 		String stick = DigestUtils.sha256Hex(DigestUtils.sha256Hex(key));
-		for (int i = 0; i <= 9; i++) {
-			if (i < 9) {
-				protein[i] = stick.substring(0,2);
-				stick = DigestUtils.sha256Hex(DigestUtils.sha256Hex(stick));
-			}
+		for (int i = 0; i < 9; i++) {
+			protein[i] = stick.substring(0,2);
+			stick = DigestUtils.sha256Hex(DigestUtils.sha256Hex(stick));
 		}
 		int i = 0;
 		while (i <= 8) {
