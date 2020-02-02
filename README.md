@@ -1,3 +1,6 @@
+# This project is deprecated
+KWallet is no longer maintained and should not be used any more. If you're looking for an alternative, consider [kristweb](https://krist.club). Existing releases have been removed and the source code remains for reference only.
+
 # KWallet
 An external wallet for [Krist](http://www.computercraft.info/forums2/index.php?/topic/22201-krist-minable-currency-that-works-across-servers/) written in Java
 
